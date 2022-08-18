@@ -1,69 +1,22 @@
-function AutoBind(_: any, _1: string, descriptor: PropertyDescriptor) {
-    const originalMethod = descriptor.value;
-    const adjustedDescriptor: PropertyDescriptor = {
-        configurable: true,
-        enumerable: false,
-        get() {
-            const boundFn = originalMethod.bind(this);
-            return boundFn;
-        }
-    }
-    return adjustedDescriptor;    
-}
+/**
+ * /// <reference path="models/drag-drop.ts" />
+/// <reference path="models/project.ts" />
+/// <reference path="state/project-state.ts" />
+/// <reference path="util/validation.ts" />
+/// <reference path="decorators/autobind.ts" />
+/// <reference path="components/base-component.ts" />
+/// <reference path="components/project-item.ts" />
+/// <reference path="components/project-input.ts" />
+/// <reference path="components/project-list.ts" />
+ */
 
-class ProjectInput {
-    templateElement: HTMLTemplateElement;
-    hostElement: HTMLDivElement;
-    element: HTMLFormElement;
-    titleInputElement: HTMLInputElement;
-    descriptionInputElement: HTMLInputElement;
-    peopleInputElement: HTMLInputElement;
+import { ProjectInput } from './components/project-input.js';
+import { ProjectList } from './components/project-list.js';
 
-    constructor() {
-        this.templateElement = document.getElementById('project-input')! as HTMLTemplateElement;
-        this.hostElement = document.getElementById('app')! as HTMLDivElement;
-
-        const importedNode = document.importNode(this.templateElement.content, true);
-        this.element = importedNode.firstElementChild as HTMLFormElement;
-        this.element.id = 'user-input';
-
-        this.titleInputElement = this.element.querySelector('#title')! as HTMLInputElement;
-        this.descriptionInputElement = this.element.querySelector('#description')! as HTMLInputElement;
-        this.peopleInputElement = this.element.querySelector('#people')! as HTMLInputElement;
-
-        this.configure();
-        this.attach();
-    }
-
-    @AutoBind
-    private submitHandler(event: Event) {
-        event.preventDefault();
-        console.log(this.titleInputElement.value);
-    }
-
-    private configure() {
-        this.element.addEventListener('submit', this.submitHandler);
-    }
-
-    private attach() {
-        this.hostElement.insertAdjacentElement('afterbegin', this.element);
-    }
-}
-
+//namespace App {
 const projectInput = new ProjectInput();
+const activeProjectsList = new ProjectList('active');
+const finishedProjectsList = new ProjectList('finished');
+//}
 
-
-
-
-
-// const projectInputTemplate = document.getElementById('project-input') as HTMLTemplateElement;
-// const singleProjectTemplate = document.getElementById('single-project') as HTMLTemplateElement;
-// const projectListTemplate = document.getElementById('project-list') as HTMLTemplateElement;
-
-// const projectInputFormElement = projectInputTemplate.content.cloneNode(true);
-// const singleProjectElement = singleProjectTemplate.content.cloneNode(true);
-// const projectListElement = projectListTemplate.content.cloneNode(true);
-
-
-// const appElement = document.getElementById('app');
-// appElement?.append(projectInputFormElement,singleProjectElement,projectListElement)
+//npm i --save-dev webpack webpack-cli webpack-dev-server typescript ts-loader
