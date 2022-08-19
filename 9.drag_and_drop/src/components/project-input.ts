@@ -5,10 +5,10 @@
 /// <reference path="../state/project-state.ts"/>
  */
 
-import { Component } from "./base-component.js";
-import { Validatable,validate } from "../util/validation.js";
-import { AutoBind } from "../decorators/autobind.js";
-import { projectState } from "../state/project-state.js";
+import { Component } from "./base-component";
+import { Validatable,validate } from "../util/validation";
+import { AutoBind } from "../decorators/autobind";
+import { projectState } from "../state/project-state";
 
 //namespace App {
 //ProjectInput Class
@@ -79,7 +79,7 @@ export class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
         const userInput = this.gatherUserInput();
         if (Array.isArray(userInput)) {
             const [title, description, people] = userInput;
-            console.log(title, description, people);
+            //console.log(title, description, people);
             projectState.addProject(title, description, people);
             this.clearInputs();
         }

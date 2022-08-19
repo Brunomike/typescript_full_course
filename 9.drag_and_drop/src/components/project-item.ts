@@ -5,10 +5,10 @@
 /// <reference path="../models/drag-drop.ts"/>
  */
 
-import { Draggable } from '../models/drag-drop.js';
-import { Project } from '../models/project.js';
-import { Component } from './base-component.js';
-import { AutoBind } from '../decorators/autobind.js';
+import { Draggable } from '../models/drag-drop';
+import { Project } from '../models/project';
+import { Component } from './base-component';
+import { AutoBind } from '../decorators/autobind';
 
 //namespace App {
     //ProjectItem Class
@@ -39,8 +39,7 @@ import { AutoBind } from '../decorators/autobind.js';
         }
 
         dragEndHandler(event: DragEvent) {
-            console.log('Drag-End');
-
+            //console.log('Drag-End');
         }
 
         configure() {

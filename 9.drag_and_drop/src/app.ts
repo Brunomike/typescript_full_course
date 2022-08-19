@@ -10,8 +10,8 @@
 /// <reference path="components/project-list.ts" />
  */
 
-import { ProjectInput } from './components/project-input.js';
-import { ProjectList } from './components/project-list.js';
+import { ProjectInput } from './components/project-input';
+import { ProjectList } from './components/project-list';
 
 //namespace App {
 const projectInput = new ProjectInput();
@@ -19,4 +19,4 @@ const activeProjectsList = new ProjectList('active');
 const finishedProjectsList = new ProjectList('finished');
 //}
 
-//npm i --save-dev webpack webpack-cli webpack-dev-server typescript ts-loader
+console.log('Hi there!');
